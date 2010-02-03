@@ -1,0 +1,5 @@
+options:
+  path_to_pmta:
+    name: Path to pmta command
+    notes: Specify the path to pmta command
+    default: /usr/sbin
