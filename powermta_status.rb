@@ -2,13 +2,22 @@
 # Copyright (c) 2010 Maarten Oelering
 #
 class PowermtaStatus < Scout::Plugin
+
+  #needs 'gem1', 'gem2'
+
+  #OPTIONS = <<-EOS
+  #options:
+  #  path_to_pmta:
+  #    name: Path to pmta command
+  #    notes: Specify the path to pmta command
+  #    default: /usr/sbin
+  #EOS
   
   def build_report
-    # needs 'gem1', 'gem2'
     status = get_status
     report(:inbound_connections => status['status.conn.smtpIn.cur'])
-    report(:inbound_traffic => status['status.traffic.lastMin.in.rcp'])
     report(:outbound_connections => status['status.conn.smtpOut.cur'])
+    report(:inbound_traffic => status['status.traffic.lastMin.in.rcp'])
     report(:outbound_traffic => status['status.traffic.lastMin.out.rcp'])
     report(:smtp_queue_recipients => status['status.queue.smtp.rcp'])
   rescue
@@ -19,6 +28,7 @@ class PowermtaStatus < Scout::Plugin
   
     # get current powermta status parameter values
     def get_status
+      # path = option(:path_to_pmta)
       output = `/usr/sbin/pmta --dom show status`
       status = {}
       output.each do |line|

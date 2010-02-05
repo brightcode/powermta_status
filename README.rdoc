@@ -1,0 +1,41 @@
+= PowerMTA status
+
+Scout plugin for PowerMTA status reporting
+
+== Description
+
+First attempt to create a Scout based monitoring solution for PowerMTA. This plugin monitors
+inbound and outbound connections, inbound and outbound traffic, and total queue size.
+
+== Scout installation
+
+=== System requirements
+
+* Linux, Apple OS-X, or Solaris
+* Ruby 1.8.6 or higher and Rubygems 1.3.1 or higher
+* Outbound access via https
+
+=== Install scout gem
+
+$ sudo gem install scout
+
+=== Install server key
+
+$ scout
+
+=== Setup crontab file
+
+* * * * *  root /usr/bin/scout [APIKEY]
+
+== Plugin installation
+
+Add a Plugin Manually
+
+Name: PowerMTA status
+URL of Plugin Code: http://github.com/suremail/powermta_status/raw/master/powermta_status.rb
+
+== Author
+
+Maarten Oelering
+http://www.suremail.eu
+maarten at suremail.eu
